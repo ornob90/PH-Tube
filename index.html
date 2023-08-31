@@ -18,20 +18,64 @@
       <nav
         class="mt-4 w-[90%] flex justify-between mx-auto max-w-[1440px] border-b-2 pb-4"
       >
-        <div class="w-[20%] lg:w-[14%]">
+        <div class="w-[30%] sm:w-[20%] lg:w-[14%]">
           <img class="" src="./images/Logo.png" alt="" />
         </div>
         <button
           type="button"
-          class="border border-black bg-gray-500/30 text-black px-4"
+          class="border border-black bg-gray-500/30 text-black px-3 sm:px-4 font-medium text-sm"
         >
           Sort by view
         </button>
-        <button class="px-3 rounded-md bg-[#FF1F3D] text-white">Blog</button>
+        <button class="px-3 rounded-md bg-[#FF1F3D] text-white font-medium">
+          Blog
+        </button>
       </nav>
     </header>
 
-    <main></main>
+    <main class="mt-4 w-[90%] mx-auto max-w-[1440px]">
+      <!-- Card Container -->
+      <div
+        id="card-container"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+      >
+        <!-- Card -->
+        <div class="grid grid-cols-1 gap-2">
+          <!-- Card Img -->
+          <div class="">
+            <img
+              src="https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149052117.jpg?w=2000"
+              alt=""
+              class="rounded-xl"
+            />
+          </div>
+
+          <!-- Card Content -->
+
+          <div class="flex gap-3">
+            <!-- Card Profile Img -->
+            <div class="w-max">
+              <img
+                src="https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                alt=""
+                class="rounded-full w-[45px] md:w-[50px] lg:w-[60px] xl:w-[50px] h-[40px] lg:h-[30px] object-cover"
+              />
+            </div>
+
+            <!-- Card Right Content -->
+            <div class="text-sm text-[#171717b3]">
+              <h1 class="font-bold text-md text-black">
+                Building a Winning UX Strategy Using the Kano Model
+              </h1>
+              <div class="flex gap-2">
+                <p class="">Awfad Hossain</p>
+              </div>
+              <p class="">91k views</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <footer></footer>
 
