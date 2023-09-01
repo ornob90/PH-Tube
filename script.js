@@ -188,7 +188,7 @@ const handleNoData = async (data) => {
         <div
           class="flex flex-col gap-2 justify-center items-center w-[300px] text-center"
         >
-          <img src="./images/icon.png" alt="" />
+          <img src="./images/Icon.png" alt="" />
           <h2 class="font-bold text-2xl">
             Opps!! Sorry, There is no content here
           </h2>
