@@ -8,7 +8,10 @@ const mainSection = document.getElementById("main");
 
 const errorContainer = document.getElementById("error-container");
 
+let categoryBtns = "";
+
 let currentID = 1000;
+let currentBtn = "All";
 
 const category_url =
   "https://openapi.programming-hero.com/api/videos/categories";
@@ -32,21 +35,54 @@ const showCategory = async () => {
   let html = "";
 
   data?.data?.map(({ category_id, category }) => {
-    html += `
-    <button
-    onclick="showProduct(${category_id})"
-    type="button"
-    class="border bg-gray-500/30 text-black/70 px-3 sm:px-4 font-medium text-sm py-1"
-  >
-    ${category}
-  </button>
-    `;
+    curHtml = "";
+
+    if (category === "All") {
+      html += `
+      <button
+        onclick="showProduct(${category_id}, '${category}')"
+        type="button"
+        class="category-btn border bg-[#FF1F3D] text-white px-3 sm:px-4 font-medium text-sm py-1"
+      >
+        ${category}
+    </button>
+      `;
+    } else {
+      html += `
+      <button
+        onclick="showProduct(${category_id}, '${category}')"
+        type="button"
+        class="category-btn border bg-gray-500/30 text-black/70 px-3 sm:px-4 font-medium text-sm py-1"
+      >
+        ${category}
+      </button> `;
+    }
   });
+
+  categoryBtns = document.getElementsByClassName("category-btn");
 
   btnContainer.innerHTML = html;
 };
 
-const showProduct = async (id, sortData) => {
+const activeBtn = (name) => {
+  for (let i = 0; i < categoryBtns.length; i++) {
+    if (categoryBtns[i].innerText == currentBtn) {
+      categoryBtns[i].classList.remove("bg-gray-500/30");
+      categoryBtns[i].classList.add("bg-[#FF1F3D]");
+
+      categoryBtns[i].classList.remove("text-black/70");
+      categoryBtns[i].classList.add("text-white");
+    } else {
+      categoryBtns[i].classList.remove("bg-[#FF1F3D]");
+      categoryBtns[i].classList.add("bg-gray-500/30");
+
+      categoryBtns[i].classList.remove("text-white");
+      categoryBtns[i].classList.add("text-black/70");
+    }
+  }
+};
+
+const showProduct = async (id, name, sortData) => {
   let data;
 
   errorContainer.classList.add("hidden");
@@ -54,6 +90,9 @@ const showProduct = async (id, sortData) => {
   cardContainer.innerHTML = "";
 
   currentID = id;
+  currentBtn = name;
+
+  activeBtn(currentBtn);
 
   !sortData ? (data = await getData(id)) : (data = sortData);
 
@@ -156,7 +195,7 @@ const comparator = (a, b) => {
 const sortByView = async () => {
   const data = await getData(currentID);
   data?.data.sort(comparator);
-  showProduct(currentID, data);
+  showProduct(currentID, currentBtn, data);
 };
 
 showCategory();
