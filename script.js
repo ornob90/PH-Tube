@@ -102,6 +102,11 @@ const showProduct = async (id, sortData) => {
                 </h1>
                 <div class="flex gap-2">
                     <p class="">${item?.authors[0]?.profile_name}</p>
+                    ${
+                      item?.authors[0].verified
+                        ? "<img src='./images/verified.svg'>"
+                        : ""
+                    }
                 </div>
                 <p class="">${item?.others?.views} views</p>
             </div>

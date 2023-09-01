@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="w-full">
+      <nav
+        class="mt-4 w-[90%] flex justify-between mx-auto max-w-[1440px] border-b-2 pb-4"
+      >
+        <div class="w-[30%] sm:w-[20%] lg:w-[14%]">
+          <img class="" src="./images/Logo.png" alt="" />
+        </div>
+
+        <a
+          href="index.html"
+          class="flex justify-center items-center px-3 rounded-md bg-gray-500/30 text-black font-medium"
+        >
+          Back
+        </a>
+      </nav>
+    </header>
+    <div class="w-4/5 max-w-[1444px] mx-auto mt-4">
+      <ul>
+        <li class="font-bold text-2xl">
+          Qns1: Discuss the scope of var, let, and const
+        </li>
+
+        <li class="ml-5 my-4">
+          The scope of var is functional scope, which means it can be accessible
+          from anywhere in the code, even if it's declared inside a function. It
+          works like a global variable.
+          <br />
+          On the other hand, let and const are block-scoped, which means the
+          variables declared with let or const are only accessible inside the
+          scope where they are declared.
+        </li>
+
+        <li class="font-bold text-2xl">
+          Qns2: Tell us the use cases of null and undefined
+        </li>
+
+        <li class="ml-5 my-4">
+          Undefine means the variable has been declared but no value has been
+          assinged to it yet
+          <br />
+          Where null means a null value is assinged to a variable
+        </li>
+
+        <li class="font-bold text-2xl">Qns3: What do you mean by REST API?</li>
+        <li class="ml-5 my-4">
+          A REST API, or Application Programming Interface, refers to a set of
+          rules used to connect the frontend to the backend or to connect
+          different apps created using various languages. It can be used to
+          access data from a backend. Many websites store their data in JSON
+          format, which can be accessed via an API.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
