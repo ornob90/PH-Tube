@@ -8,6 +8,8 @@ const mainSection = document.getElementById("main");
 
 const errorContainer = document.getElementById("error-container");
 
+const loading = document.getElementById("loading");
+
 let categoryBtns = "";
 
 let currentID = 1000;
@@ -94,6 +96,8 @@ const showProduct = async (id, name, sortData) => {
 
   activeBtn(currentBtn);
 
+  loading.classList.remove("hidden");
+
   !sortData ? (data = await getData(id)) : (data = sortData);
 
   handleNoData(data);
@@ -113,10 +117,12 @@ const showProduct = async (id, name, sortData) => {
             <img
                 src=${item?.thumbnail}
                 alt=""
-                class="rounded-xl h-full w-full object-cover"
+                class="rounded-xl h-[350px] sm:h-[300px] lg:h-[200px] w-full object-cover"
             />
             <p
-                class="text-white text-sm absolute bottom-[2%] right-[2%] bg-black px-1 py-[2px]"
+                class="${
+                  time ? "block" : "hidden"
+                } text-white text-[1rem] sm:text-[.8rem] lg:text-[.7rem] absolute bottom-[2%] right-[2%] bg-black px-2 py-1 rounded-lg"
             >
                 ${time ? secToHour(time) : ""}
             </p>
@@ -155,10 +161,23 @@ const showProduct = async (id, name, sortData) => {
     `;
 
     cardContainer.innerHTML = html;
+
+    loading.classList.add("hidden");
   });
 };
 
-const handleNoData = (data) => {
+const lateHidden = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      loading.classList.add("hidden");
+      resolve();
+    }, 500);
+  });
+};
+
+const handleNoData = async (data) => {
+  const loading = await lateHidden();
+
   if (data?.data?.length == 0) {
     errorContainer.classList.remove("hidden");
     errorContainer.classList.add("flex");
